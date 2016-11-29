@@ -25,7 +25,7 @@ static PyObject * method_PythonWrapper(
     }
     
     return Py_BuildValue("i", maxList(list1, N));
-}
+} 
 
 static PyMethodDef methods[] = {
   { "method", method_PythonWrapper, METH_VARARGS, "" }
