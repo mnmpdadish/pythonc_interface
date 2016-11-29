@@ -11,7 +11,8 @@ static PyObject * main_PythonWrapper(
 
     main();
     int i; double d;
-    PyArg_ParseTuple(args, "id", &i, &d );
+    if(!PyArg_ParseTuple(args, "id", &i, &d )) 
+        return NULL;
     return Py_BuildValue("i", i+(int)d );
 }
 

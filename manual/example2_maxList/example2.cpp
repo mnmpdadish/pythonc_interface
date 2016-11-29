@@ -13,7 +13,9 @@ static PyObject * method_PythonWrapper(
 
     PyObject *myList;
     PyObject *listElement;
-    PyArg_ParseTuple(args, "O", &myList);
+    if(!PyArg_ParseTuple(args, "O", &myList)) {
+        return NULL;
+    }
 
     Py_ssize_t i=0, N = PyList_Size(myList);
     int * list1; 
