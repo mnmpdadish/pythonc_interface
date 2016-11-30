@@ -1,9 +1,6 @@
-from ctypes import cdll, c_int, c_double
-
-i = c_int(3)
-d = c_double(4)
+from ctypes import cdll 
 
 hello = cdll.LoadLibrary('./exampleCuba.so')
-result = hello.main(i,d)  
+result = hello.main()  
 
-print result
+print 'OK.'

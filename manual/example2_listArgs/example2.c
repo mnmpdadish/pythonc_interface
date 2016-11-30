@@ -1,11 +1,17 @@
 #include "Python.h"
 #include <stdio.h>
 
-int maxList(int * list, int N) {
-  int max = list[0];
-  int i=0;
-  for(i=1; i<N; i++) if(max<list[i]) max = list[i];
-  return max;
+int sortList(int * list, int N) {
+  int tmp,i,j;
+  for(i=0; i<N; i++) 
+    for(j=0;j<N-1;j++)
+      if(list[j]<list[j+1])
+        {
+          tmp=list[j+1];
+          list[j+1]=list[j];
+          list[j]=tmp;
+        }
+  return 0;
 }
 
 static PyObject * method_PythonWrapper(
@@ -21,20 +27,29 @@ static PyObject * method_PythonWrapper(
     int * list1; 
     list1 = (int *) malloc(N*sizeof(int));
 
-    for(i=0; i<N; i++){ 
+    for(i=0; i<N; i++)
+    { 
         listElement = PyList_GetItem(myList, i); 
         list1[i] = PyInt_AsLong(listElement); 
     }
-    
-    return Py_BuildValue("i", maxList(list1, N));
+
+    sortList(list1,N);
+    PyObject *ResultList = PyList_New(N);
+    for(i=0; i<N; i++)
+    {
+        listElement = PyInt_FromLong(list1[i]);
+        PyList_SetItem(ResultList, i, listElement); 
+    }
+
+    return Py_BuildValue("O", ResultList);
 } 
 
 static PyMethodDef methods[] = {
   { "method", method_PythonWrapper, METH_VARARGS, "" }
 };
 
-DL_EXPORT(void) initmaxList(void) {
-    Py_InitModule("maxList", methods);
+DL_EXPORT(void) initsortList(void) {
+    Py_InitModule("sortList", methods);
 }
 
 
