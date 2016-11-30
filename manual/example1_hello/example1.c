@@ -17,23 +17,23 @@ static PyObject * main_PythonWrapper(
 }
 
 static PyMethodDef methods[] = {
-  { "method", main_PythonWrapper, METH_VARARGS, "" }
+  { "method", main_PythonWrapper, METH_VARARGS, "" },
+  {NULL, NULL, 0, NULL}
 };
 
-DL_EXPORT(void) inithello(void) {
-    Py_InitModule("hello", methods);
+
+#ifndef python3
+PyMODINIT_FUNC inithello(void) {
+    (void) Py_InitModule("hello", methods);
 }
 
+#else
 
+static struct PyModuleDef moduledef = {PyModuleDef_HEAD_INIT,"hello",NULL,-1,methods};
 
-
-
-
-
-
-
-
-
-
+PyMODINIT_FUNC inithello(void) {
+    PyModule_Create(&moduledef);
+}
+#endif
 
 
