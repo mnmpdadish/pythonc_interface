@@ -1,0 +1,27 @@
+
+This repository want to be a tutorial on how to interface 
+python with C/C++, although there is only one example with C++.
+
+I present two approaches:
+1. "ctypes" refers to the module called ctypes, 
+   a very simple and straighforward approach.
+2. "manual" refers to the way to code your python extension yourself,
+   as described at https://docs.python.org/2/extending/extending.html
+
+Every directory contains a simple functionning example.
+Compile with make and run with python. The python code have only
+be tested with python 2.7 and not 3+.
+
+The shared object library will then be created in the directory
+and python will be able to call it.
+
+If someone wants to move the ".so" library away from the working
+directory, he must update some environment variable with these commands:
+
+for ctypes:
+LD_LIBRARY_PATH=/absolute/path/to/your/so:$LD_LIBRARY_PATH
+
+for manual:
+PYTHONPATH=/absolute/path/to/your/so:$PYTHONPATH
+
+
