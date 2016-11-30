@@ -1,5 +1,6 @@
 #include "Python.h"
 #include <stdio.h>
+#include <signal.h>
 
 static PyObject * theCountDown(
        PyObject *self, PyObject *args){

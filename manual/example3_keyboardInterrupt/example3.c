@@ -1,5 +1,6 @@
 #include "Python.h"
 #include <stdio.h>
+#include <signal.h>
 
 //
 void interrupt_handler(int sig) {exit(0);}
