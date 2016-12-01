@@ -1,7 +1,7 @@
 #include "Python.h"
 #include <stdio.h>
 
-int main() {
+int main(void) {
   printf("Hello World.\n");
   return 0;
 }
@@ -21,19 +21,12 @@ static PyMethodDef methods[] = {
   {NULL, NULL, 0, NULL}
 };
 
+static struct PyModuleDef hello = 
+  {PyModuleDef_HEAD_INIT, "hello", NULL, -1,methods};
 
-#ifndef python3
-PyMODINIT_FUNC inithello(void) {
-    (void) Py_InitModule("hello", methods);
+PyMODINIT_FUNC PyInit_hello(void){
+    return PyModule_Create(&hello);
 }
 
-#else
-
-static struct PyModuleDef moduledef = {PyModuleDef_HEAD_INIT,"hello",NULL,-1,methods};
-
-PyMODINIT_FUNC inithello(void) {
-    PyModule_Create(&moduledef);
-}
-#endif
 
 

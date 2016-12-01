@@ -1,7 +1,8 @@
 # use glob syntax.
 syntax: glob
 
-
+*.out
+*build*
 *setupHome.py
 *.so
 *Test
