@@ -9,6 +9,8 @@ I present two approaches:
    as described at https://docs.python.org/2/extending/extending.html
    Note that there is small differences for this approach between 
    python2.7 and 3+, hence a different directory for each version.
+   You can easily check for the difference using (for example):
+   vimdiff manual_python2.7/example2_listArgs/example2.c manual_python3/example2_listArgs/example2.c
 
 Every directory contains a simple functionning example.
 Compile with make and run with python. The python code have only

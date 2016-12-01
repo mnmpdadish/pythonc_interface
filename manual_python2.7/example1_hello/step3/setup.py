@@ -1,0 +1,4 @@
+from distutils.core import setup, Extension
+
+extension_mod = Extension(name="hello",sources=["example1.c"])
+setup(name = "hello", ext_modules=[extension_mod])
