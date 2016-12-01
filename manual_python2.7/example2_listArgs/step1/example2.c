@@ -30,11 +30,12 @@ static PyObject * method_PythonWrapper(
 } 
 
 static PyMethodDef methods[] = {
-  { "method", method_PythonWrapper, METH_VARARGS, "" }
+  { "method", method_PythonWrapper, METH_VARARGS, "" },
+  {NULL, NULL, 0, NULL}
 };
 
-DL_EXPORT(void) initmaxList(void) {
-    Py_InitModule("maxList", methods);
+PyMODINIT_FUNC initmaxList(void) {
+    (void) Py_InitModule("maxList", methods);
 }
 
 

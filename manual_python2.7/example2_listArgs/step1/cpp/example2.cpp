@@ -29,26 +29,14 @@ static PyObject * method_PythonWrapper(
     return Py_BuildValue("i", maxList(list1, N));
 } 
 
-
 static PyMethodDef methods[] = {
-  { "method", method_PythonWrapper, METH_VARARGS, "" }
+  { "method", method_PythonWrapper, METH_VARARGS, "" },
+  {NULL, NULL, 0, NULL}
 };
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-    DL_EXPORT(void) initmaxList(void) {
-        Py_InitModule("maxList", methods);
-    }
-#ifdef __cplusplus
+PyMODINIT_FUNC initmaxList(void) {
+    (void) Py_InitModule("maxList", methods);
 }
-#endif
-
-
-
-
-
-
 
 
 

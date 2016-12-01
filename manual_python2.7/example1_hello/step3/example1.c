@@ -14,11 +14,12 @@ static PyObject * main_PythonWrapper(
 }
 
 static PyMethodDef methods[] = {
-  { "method", main_PythonWrapper, METH_VARARGS, "" }
+  { "method", main_PythonWrapper, METH_VARARGS, "" },
+  {NULL, NULL, 0, NULL}
 };
 
-DL_EXPORT(void) inithello(void) {
-    Py_InitModule("hello", methods);
+PyMODINIT_FUNC inithello(void) {
+    (void) Py_InitModule("hello", methods);
 }
 
 

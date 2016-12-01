@@ -45,11 +45,12 @@ static PyObject * method_PythonWrapper(
 } 
 
 static PyMethodDef methods[] = {
-  { "method", method_PythonWrapper, METH_VARARGS, "" }
+  { "method", method_PythonWrapper, METH_VARARGS, "" },
+  {NULL, NULL, 0, NULL}
 };
 
-DL_EXPORT(void) initsortList(void) {
-    Py_InitModule("sortList", methods);
+PyMODINIT_FUNC initsortList(void) {
+    (void) Py_InitModule("sortList", methods);
 }
 
 

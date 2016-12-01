@@ -16,11 +16,12 @@ static PyObject * theCountDown(
 } 
 
 static PyMethodDef methods[] = {
-  { "doIt", theCountDown, METH_VARARGS, "" }
+  { "doIt", theCountDown, METH_VARARGS, "" },
+  {NULL, NULL, 0, NULL}
 };
 
-DL_EXPORT(void) initcountDown(void) {
-    Py_InitModule("countDown", methods);
+PyMODINIT_FUNC initcountDown(void) {
+    (void) Py_InitModule("countDown", methods);
 }
 
 
