@@ -26,6 +26,7 @@ static PyObject * method_PythonWrapper(
         list1[i] = PyInt_AsLong(listElement); 
     }
     
+    free(list1);    
     return Py_BuildValue("i", maxList(list1, N));
 } 
 

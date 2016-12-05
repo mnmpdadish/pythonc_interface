@@ -40,6 +40,8 @@ static PyObject * method_PythonWrapper(
         listElement = PyInt_FromLong(list1[i]);
         PyList_SetItem(ResultList, i, listElement); 
     }
+    
+    free(list1);
 
     return Py_BuildValue("O", ResultList);
 } 

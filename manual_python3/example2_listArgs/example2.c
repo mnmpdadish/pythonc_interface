@@ -41,6 +41,7 @@ static PyObject * method_PythonWrapper(
         PyList_SetItem(ResultList, i, listElement); 
     }
 
+    free(list1);
     return Py_BuildValue("O", ResultList);
 } 
 

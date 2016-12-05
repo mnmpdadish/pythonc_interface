@@ -25,7 +25,8 @@ static PyObject * method_PythonWrapper(
         listElement = PyList_GetItem(myList, i); 
         list1[i] = PyLong_AsLong(listElement);  // difference with python2.7
     }
-    
+
+    free(list1);    
     return Py_BuildValue("i", maxList(list1, N));
 } 
 
