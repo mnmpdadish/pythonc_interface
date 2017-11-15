@@ -34,8 +34,6 @@ I present two approaches:
    a very simple and straighforward approach.
 2. "manual" refers to the way to code your python extension yourself,
    as described at https://docs.python.org/2/extending/extending.html
-   Python2.7 and 3+ both behave differently, so there is one directory
-   for each version.
    Note that there is small differences for this approach between 
    python2.7 and 3+, hence a different directory for each version.
    You can easily check for the difference using (for example):
