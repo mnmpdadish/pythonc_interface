@@ -6,3 +6,4 @@ syntax: glob
 *setupHome.py
 *.so
 *Test
+*.tar.gz
