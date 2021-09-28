@@ -3,7 +3,10 @@
 #include <signal.h>
 
 //
-void interrupt_handler(int sig) {exit(0);}
+void interrupt_handler(int sig) {
+    printf(" SIGINT: stopping now.\n");
+    exit(0);
+}
 //
 
 static PyObject * theCountDown(
@@ -21,11 +24,11 @@ static PyObject * theCountDown(
 
 static PyMethodDef methods[] = {
   { "doIt", theCountDown, METH_VARARGS, "" },
-  {NULL, NULL, 0, NULL}
+  {NULL, NULL, 0, NULL}  // sentinel
 };
 
 struct PyModuleDef countDownModule =
-  {PyModuleDef_HEAD_INIT, "countDown", NULL, -1,methods};
+  {PyModuleDef_HEAD_INIT, "countDown", NULL, -1, methods};
 
 PyMODINIT_FUNC PyInit_countDown(void){
     return PyModule_Create(&countDownModule);
